@@ -1,0 +1,36 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #4b9f7b;
+    color: white;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: white;
+    line-height: 42px;
+    padding: 0 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.content-container {
+    flex: 1;
+    margin-top: 56px;
+    padding: 1rem;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    text-align: center;
+}

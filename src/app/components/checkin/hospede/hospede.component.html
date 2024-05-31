@@ -1,0 +1,49 @@
+<mat-dialog-content class="relative flex flex-col w-full h-full">
+    <div class="w-full">
+        <span class="font-bold">Inclusão de Hóspede</span>
+    </div>
+
+    <form [formGroup]="hospedeForm" class="grid grid-cols-2 gap-2 w-full">
+        <mat-form-field class="col-span-2">
+            <mat-label>Nome</mat-label>
+            <input formControlName="nome"
+                   matInput
+                   type="text"
+                   maxlength="50">
+        </mat-form-field>
+
+        <mat-form-field class="col-span-1">
+            <mat-label>CPF</mat-label>
+            <input formControlName="cpf"
+                   maxlength="14"
+                   matInput
+                   [mask]="'000.000.000-00'">
+        </mat-form-field>
+
+        <mat-form-field class="col-span-1">
+            <mat-label>Telefone</mat-label>
+            <input formControlName="telefone"
+                   matInput
+                   [mask]="mascaraTelefone()">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <ng-container>
+        <button mat-flat-button
+                color="primary"
+                (click)="salvar()"
+                [disabled]="hospedeForm.invalid">
+            Salvar
+        </button>
+    </ng-container>
+
+    <ng-container>
+        <button mat-stroked-button
+                color="primary"
+                [matDialogClose]="'cancelado'">
+            Cancelar
+        </button>
+    </ng-container>
+</mat-dialog-actions>
