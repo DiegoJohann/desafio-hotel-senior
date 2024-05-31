@@ -22,14 +22,14 @@ export function cpfValidator(): ValidatorFn {
 
         const cleanedCpf = cpf.replace(/\D/g, '');
 
-        if (cleanedCpf.length !== 11) return { cpfInvalid: true };
+        if (cleanedCpf.length !== 11) return {cpfInvalid: true};
 
         const invalidCpfs = [
             '00000000000', '11111111111', '22222222222', '33333333333',
             '44444444444', '55555555555', '66666666666', '77777777777',
             '88888888888', '99999999999'
         ];
-        if (invalidCpfs.includes(cleanedCpf)) return { cpfInvalid: true };
+        if (invalidCpfs.includes(cleanedCpf)) return {cpfInvalid: true};
 
         let sum = 0;
         for (let i = 0; i < 9; i++) {
@@ -37,7 +37,7 @@ export function cpfValidator(): ValidatorFn {
         }
         let firstCheckDigit = 11 - (sum % 11);
         if (firstCheckDigit === 10 || firstCheckDigit === 11) firstCheckDigit = 0;
-        if (firstCheckDigit !== parseInt(cleanedCpf.charAt(9))) return { cpfInvalid: true };
+        if (firstCheckDigit !== parseInt(cleanedCpf.charAt(9))) return {cpfInvalid: true};
 
         sum = 0;
         for (let i = 0; i < 10; i++) {
@@ -45,7 +45,7 @@ export function cpfValidator(): ValidatorFn {
         }
         let secondCheckDigit = 11 - (sum % 11);
         if (secondCheckDigit === 10 || secondCheckDigit === 11) secondCheckDigit = 0;
-        if (secondCheckDigit !== parseInt(cleanedCpf.charAt(10))) return { cpfInvalid: true };
+        if (secondCheckDigit !== parseInt(cleanedCpf.charAt(10))) return {cpfInvalid: true};
 
         return null;
     };

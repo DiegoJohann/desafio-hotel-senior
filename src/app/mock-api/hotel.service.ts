@@ -11,10 +11,11 @@ export class HotelService {
     private hospedesUrl = 'api/hospedes';
     private checkinsUrl = 'api/checkins';
     private httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
     getHospedes(): Observable<Hospede[]> {
         return this.http.get<Hospede[]>(this.hospedesUrl)

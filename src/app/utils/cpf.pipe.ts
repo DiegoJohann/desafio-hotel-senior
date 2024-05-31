@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class CpfPipe implements PipeTransform {
 
-    transform(value: string|number,
+    transform(value: string | number,
               ocultarAlgunsValores: boolean = false): string {
         let valorFormatado = value + '';
 

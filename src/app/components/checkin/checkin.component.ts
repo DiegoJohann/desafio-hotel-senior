@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatSuffix} from "@angular/material/form-field";
-import {FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
@@ -109,7 +109,12 @@ export class CheckinComponent implements OnInit {
         this.getHospedes();
         this.filtroForm.get('filtro')?.valueChanges.subscribe(() => this.aplicarFiltro());
 
-        this._hotelService.addHospede({id: 1, nome: 'Diego Roberto Johann', cpf: '03701826005', telefone: '51994805100'})
+        this._hotelService.addHospede({
+            id: 1,
+            nome: 'Diego Roberto Johann',
+            cpf: '03701826005',
+            telefone: '51994805100'
+        })
             .subscribe(hospede => this.hospedes.push(hospede));
     }
 

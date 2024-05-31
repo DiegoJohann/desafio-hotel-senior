@@ -1,6 +1,6 @@
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
-import { HospedeComponent } from './hospede.component';
+import {HospedeComponent} from './hospede.component';
 import {MatDialogRef} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {provideNgxMask} from "ngx-mask";
@@ -20,7 +20,7 @@ describe('HospedeComponent', () => {
         await TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, HospedeComponent, NoopAnimationsModule],
             providers: [
-                { provide: MatDialogRef, useValue: dialogMock },
+                {provide: MatDialogRef, useValue: dialogMock},
                 provideNgxMask(),
                 provideLuxonDateAdapter()
             ]
@@ -73,9 +73,9 @@ describe('HospedeComponent', () => {
         const cpf = '123.456.789-01';
         const telefone = '(11) 12345-6789';
 
-        component.hospedeForm.setValue({ nome, cpf, telefone });
+        component.hospedeForm.setValue({nome, cpf, telefone});
         component.salvar();
 
-        expect(dialogRefSpy.close).toHaveBeenCalledWith({ id, nome, cpf, telefone });
+        expect(dialogRefSpy.close).toHaveBeenCalledWith({id, nome, cpf, telefone});
     }));
 });

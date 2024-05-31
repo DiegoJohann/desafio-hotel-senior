@@ -6,14 +6,16 @@
     </button>
 
     <div class="col-span-6 card">
-        <div class="card-header" [ngClass]="{'card-header-checkout': checkInSelecionado, 'card-header': !checkInSelecionado}">
-            {{textoTitulo}}
+        <div class="card-header"
+             [ngClass]="{'card-header-checkout': checkInSelecionado, 'card-header': !checkInSelecionado}">
+            {{ textoTitulo }}
         </div>
         <div class="card-body">
             <form [formGroup]="checkinForm" class="grid grid-cols-4 gap-2" (ngSubmit)="novoCheckIn()">
                 <mat-form-field class="w-full">
                     <mat-label>Data de Entrada</mat-label>
-                    <input matInput [matDatepicker]="dataEntrada" formControlName="dataEntrada" autocomplete="off" name="dataEntrada">
+                    <input matInput [matDatepicker]="dataEntrada" formControlName="dataEntrada" autocomplete="off"
+                           name="dataEntrada">
                     <mat-datepicker-toggle matSuffix [for]="dataEntrada"></mat-datepicker-toggle>
                     <mat-datepicker #dataEntrada></mat-datepicker>
                 </mat-form-field>
@@ -27,7 +29,8 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Data de Saída</mat-label>
-                    <input matInput [matDatepicker]="dataSaida" formControlName="dataSaida" autocomplete="off" name="dataEntrada">
+                    <input matInput [matDatepicker]="dataSaida" formControlName="dataSaida" autocomplete="off"
+                           name="dataEntrada">
                     <mat-datepicker-toggle matSuffix [for]="dataSaida"></mat-datepicker-toggle>
                     <mat-datepicker #dataSaida></mat-datepicker>
                 </mat-form-field>
@@ -43,12 +46,14 @@
                     <mat-label>Hóspede</mat-label>
                     <mat-select formControlName="pessoa">
                         @for (hospede of hospedes; track hospede.id) {
-                            <mat-option [value]="hospede">{{hospede.nome + ' - CPF: '}} {{hospede.cpf | cpf}}</mat-option>
+                            <mat-option [value]="hospede">{{ hospede.nome + ' - CPF: ' }} {{ hospede.cpf | cpf }}
+                            </mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
 
-                <mat-checkbox [checked]="this.possuiVeiculo" (change)="trocaPossuiVeiculo()" color="primary" class="col-span-2">
+                <mat-checkbox [checked]="this.possuiVeiculo" (change)="trocaPossuiVeiculo()" color="primary"
+                              class="col-span-2">
                     Possui Veículo
                 </mat-checkbox>
 
@@ -87,28 +92,28 @@
                 <ng-container matColumnDef="nome">
                     <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
                     <mat-cell *matCellDef="let item">
-                        {{item.pessoa.nome}}
+                        {{ item.pessoa.nome }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="documento">
                     <mat-header-cell *matHeaderCellDef>Documento</mat-header-cell>
                     <mat-cell *matCellDef="let item">
-                        {{item.pessoa.cpf | cpf}}
+                        {{ item.pessoa.cpf | cpf }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="valordevido">
                     <mat-header-cell *matHeaderCellDef>Valor Devido</mat-header-cell>
                     <mat-cell *matCellDef="let item">
-                        {{item.valorDevido | currency: 'BRL'}}
+                        {{ item.valorDevido | currency: 'BRL' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="valorgasto">
                     <mat-header-cell *matHeaderCellDef>Valor Gasto</mat-header-cell>
                     <mat-cell *matCellDef="let item">
-                        {{item.valorGasto | currency: 'BRL'}}
+                        {{ item.valorGasto | currency: 'BRL' }}
                     </mat-cell>
                 </ng-container>
 
