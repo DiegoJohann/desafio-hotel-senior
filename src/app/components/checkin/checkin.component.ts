@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatSuffix} from "@angular/material/form-field";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
@@ -143,6 +143,13 @@ export class CheckinComponent implements OnInit {
                 let dataSaida = new Date(this.f['dataSaida'].value);
                 let horaSaida = this.f['horaSaida'].value.split(':');
                 dataSaida.setHours(horaSaida[0], horaSaida[1]);
+
+                const diferenca = dataSaida.getTime() - dataEntrada.getTime();
+                const difDias = Math.ceil(diferenca / (1000 * 3600 * 24));
+                if (difDias < 1) {
+                    alert('A data de saída deve ser pelo menos um dia maior do que a data de entrada!');
+                    return;
+                }
 
                 const checkInAtualizado = this.checkInSelecionado;
                 checkInAtualizado.dataSaida = dataSaida;
